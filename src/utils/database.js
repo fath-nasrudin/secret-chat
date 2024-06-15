@@ -17,5 +17,6 @@ const connect = () => {
 
 module.exports = {
   connect,
-  mongoose,
+  Schema: mongoose.Schema,
+  model: mongoose.model,
 }
