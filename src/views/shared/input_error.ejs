@@ -1,0 +1,9 @@
+<% if (errors) { %>
+  <ul class="form-error">
+  <% errors.forEach(error => { %>
+    <% if (error.path === path) { %>
+      <li><%= error.msg %></li>
+    <% } %>
+  <% }) %>
+  </ul>
+<% } %>

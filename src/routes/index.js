@@ -5,4 +5,6 @@ router.route('/')
     res.send('Root Page');
   });
 
+router.use('/auth', require('./auth.route'));
+
 module.exports = router;
