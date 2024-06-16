@@ -9,6 +9,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // middlewares
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended: true}));
 
 // routes
 app.use('/', require('./routes'));
