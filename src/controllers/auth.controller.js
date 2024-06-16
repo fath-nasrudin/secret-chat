@@ -18,7 +18,6 @@ module.exports.postSignup = [
   validatePassword(),
   // handle error
   asyncHandler(async (req, res, next) => {
-    console.log(req.body)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render('auth/signup_form', {
