@@ -37,3 +37,18 @@ module.exports.postSignup = [
     res.redirect('/auth/login');
   })
 ];
+
+module.exports.getLogin = (req, res) => {
+  res.render('auth/login_form', {
+    errors: null,
+    userdata: null,
+    message: req.flash('error'),
+  })
+}
+
+module.exports.postLogin = [
+  asyncHandler(async (req, res, next) => {
+    
+    res.send(req.body);
+  })
+];

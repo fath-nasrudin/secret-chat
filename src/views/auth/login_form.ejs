@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Secret Chat</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div>
+    <header class="main-container main-header bg-primary"><a href="/" class="logo">Secret Chat</a></header>
+    <div class="main-container mt-8" style="display: grid; place-content: center; gap: 16px;">
+      <h1 class="text-center">Login</h1>
+      
+      <form class="form width-lg" method="post">
+        <%# Username %>
+        <div class="form-group">
+          <% if (message.length > 0) { %>
+            <p class="form-error"><%= message %></p>
+          <% } %>
+          <label class="form-label"  for="username">Username</label>
+          <input
+            class="form-input"
+            id="username"
+            type="text"
+            name="username"
+            value="<%= userdata ? userdata.username : '' %>"
+            required
+          >
+          <%- include('../shared/input_error', { path: 'username', errors: errors?errors:null}) %>
+        </div>
+
+        <%# Password %>
+        <div class="form-group">
+          <label class="form-label"  for="password">Password</label>
+          <input
+            class="form-input"
+            id="password"
+            type="password"
+            name="password"
+            value="<%= userdata ? userdata.password : '' %>"
+            required
+          >
+          <%- include('../shared/input_error', { path: 'password', errors: errors?errors:null}) %>
+        </div>
+        
+        <button class="btn btn--primary">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
