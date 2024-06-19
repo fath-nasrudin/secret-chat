@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up | Secret Chat</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-  <div>
-    <header class="main-container main-header bg-primary"><a href="/" class="logo">Secret Chat</a></header>
+<%- include('../shared/layout_top') %>
+
     <div class="main-container mt-8" style="display: grid; place-content: center; gap: 16px;">
       <h1 class="text-center">Signup</h1>
       <form class="form width-lg" method="post">
@@ -68,6 +59,4 @@
         <button class="btn btn--primary">Signup</button>
       </form>
     </div>
-  </div>
-</body>
-</html>
+<%- include('../shared/layout_bottom') %>

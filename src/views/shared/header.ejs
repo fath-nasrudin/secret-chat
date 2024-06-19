@@ -1,0 +1,14 @@
+  <header class="main-container main-header bg-primary">
+    <a href="/" class="logo  mr-auto">Secret Chat</a>
+
+    <% if (user) { %>
+      <a href="/auth/logout"><button class="btn">Logout</button></a>
+
+    <% } else { %>
+      <div>
+        <a href="/auth/signup"><button class="btn">Sign Up</button></a>
+        <a href="/auth/login"><button class="btn">Login</button></a>
+      </div>
+    <% } %>
+    
+  </header>
