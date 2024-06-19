@@ -5,6 +5,7 @@ const {
   validationResult } = require('../middlewares/validator.middleware');
 const {hashPassword} = require('../utils/hasher/hasher.middleware');
 const User = require('../models/user.model');
+const { passport } = require('../utils/authentication')
 
 module.exports.getSignup = (req, res) => {
   res.render('auth/signup_form', {
@@ -45,9 +46,8 @@ module.exports.getLogin = (req, res) => {
   })
 }
 
-module.exports.postLogin = [
-  asyncHandler(async (req, res, next) => {
-    
-    res.send(req.body);
-  })
-];
+module.exports.postLogin = passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+  });

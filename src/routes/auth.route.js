@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth.controller');
-const { authenticate, passport} = require('../utils/authentication')
 
 router.route('/signup')
   .get(authController.getSignup)
@@ -8,10 +7,6 @@ router.route('/signup')
 
 router.route('/login')
   .get(authController.getLogin)
-  .post(passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/auth/login',
-    failureFlash: true,
-  }));
+  .post(authController.postLogin);
 
 module.exports = router;
