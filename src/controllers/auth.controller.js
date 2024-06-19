@@ -51,3 +51,10 @@ module.exports.postLogin = passport.authenticate('local', {
     failureRedirect: '/auth/login',
     failureFlash: true,
   });
+
+module.exports.getLogout = (req, res) => {
+    req.logout( err => {
+      if (err) { return next(err) };
+      res.redirect('/');
+    });  
+}
