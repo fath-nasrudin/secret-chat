@@ -1,6 +1,14 @@
 const { body, validationResult } = require('express-validator');
 const User = require('../models/user.model');
 
+const validateString = (field, options) => {
+  return body(field)
+    .trim()
+    .escape()
+    .isLength( { min: 1, max: 30})
+    .withMessage(`${field} should at least have 1 chars`);
+}
+
 const validateUsername = (field = 'username', options = {}) => {
   return body(field)
     .trim()
@@ -33,4 +41,5 @@ module.exports = {
   validationResult,
   validateUsername,
   validatePassword,
+  validateString,
 }
