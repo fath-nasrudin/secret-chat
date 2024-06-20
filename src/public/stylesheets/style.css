@@ -305,6 +305,67 @@ ul.form-error {
   cursor: pointer;
 }
 
+/* === messageboard component === */
+.messageboard {
+  height: 80vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.message__sender {
+  font-weight: 700;
+  font-size: var(--fs-300);
+}
+
+.messageboard__content {
+  background-color: rgb(195, 195, 195);
+  flex: 1;
+  overflow-y: auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.messageboard__footer form {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+
+.messageboard--input {
+  flex: 1;
+  resize: none;
+  overflow: hidden;
+}
+
+.message {
+  min-width: 200px;
+  width: fit-content;
+  max-width: 80%;
+  padding: var(--sp-1) var(--sp-2);
+  background-color: white;
+  border-end-end-radius: var(--border-radius-base);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.message--mine {
+  align-self: flex-end;
+  background-color: rgb(71, 227, 71);
+  border-end-end-radius: 0;
+  border-bottom-left-radius: var(--border-radius-base);
+}
+
+.message__time {
+  align-self: flex-end;
+  font-size: var(--fs-200);
+  color: var(--text-neutral-600)
+}
+
 /* custom components */
 .product-detail {
   display: flex;

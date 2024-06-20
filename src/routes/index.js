@@ -11,9 +11,10 @@ router.use((req, res, next) => {
 
 router.route('/')
   .get((req, res) => {
-    res.send('Root Page');
+    res.redirect('/messages');
   });
 
 router.use('/auth', require('./auth.route'));
+router.use('/messages', require('./message.route'));
 
 module.exports = router;

@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Messages | Secret Chat</title>
-</head>
-<body>
-  <h1>this will be the main page</h1>
-</body>
-</html>
+<%- include('../shared/layout_top') %>
+  <div class="main-container">
+    <div class="messageboard">
+      <div class="messageboard__content" id="messageboardContent">
+      
+        <% if (messages) { %>
+          <% messages.forEach(message => { %>
+
+            <% const isMyMessage = (user && message.user._id.toString() === user._id.toString()) ? 'message--mine': ''  %>
+            <% const messageSender = (user && message.user._id.toString() === user._id.toString()) ? 'you': message.user.username  %>
+            <div class=" message <%= isMyMessage %>">
+              <div class="message__sender">
+                <%= messageSender %>
+              </div>
+              <div class="message__text">
+                <%= message.text %>
+              </div>
+              <div class="message__time">
+                <%= new Date(message.created_at).toLocaleTimeString('en-EN', { hour: '2-digit', minute: '2-digit' }) %>
+              </div>
+            </div>
+
+          <% }) %>
+        <% } %>
+      </div>
+      <div class="messageboard__footer">
+        <form method="post">
+          <textarea name="message" id="message-input" class="messageboard--input" placeholder="type a message"></textarea>
+
+          <button class="btn messageboard-send-btn">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<%- include('../shared/layout_bottom') %>
