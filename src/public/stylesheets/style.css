@@ -22,6 +22,7 @@
 
   /* === colors === */
   --color-primary-500: rgb(171, 98, 232);
+  --color-primary-900: rgb(124, 0, 225);
 
   --color-neutral-900: rgb(0, 0, 0);
   --color-neutral-800: rgba(0, 0, 0, 0.8);
@@ -461,6 +462,13 @@ ul.form-error {
 /* === Text Colors === */
 .text-red {
   color: rgb(240, 61, 61);
+}
+
+.text-primary {
+  color: var(--color-primary-500);
+}
+.text-primary-900 {
+  color: var(--color-primary-900);
 }
 
 .text-center {
