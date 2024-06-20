@@ -1,6 +1,7 @@
 const Message = require('../models/message.model');
 const { validateString } = require('../middlewares/validator.middleware');
-const { checkAuthentication } = require('../utils/authentication/authentication.middleware');
+const { checkAuthentication, checkIsAdmin } = require('../utils/authentication/authentication.middleware');
+const {asyncHandler} = require('../utils/asyncHandler');
 
 module.exports.getMessages = async (req, res) => {
   const messages = await Message.find().populate('user', 'username');
@@ -26,4 +27,13 @@ module.exports.postCreateMessage = [
       next(error);
     }
   }
+];
+
+module.exports.getDeleteMessage = [
+  checkAuthentication(),
+  checkIsAdmin(),
+  asyncHandler(async (req, res) => {
+    await Message.findByIdAndDelete(req.params.id);
+    res.redirect('/');
+  })
 ];
