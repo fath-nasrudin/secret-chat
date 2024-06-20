@@ -23,12 +23,27 @@
           <% }) %>
         <% } %>
       </div>
+
       <div class="messageboard__footer">
         <form method="post">
-          <textarea name="message" id="message-input" class="messageboard--input" placeholder="type a message"></textarea>
+          <textarea 
+            name="message" 
+            id="message-input" 
+            class="messageboard--input" 
+            placeholder="type a message"
+            <%= (!user) ? 'disabled' : ''  %> 
+            >
+          </textarea>
 
-          <button class="btn messageboard-send-btn">Send</button>
+          <button 
+            class="btn messageboard-send-btn"
+            <%= (!user) ? 'disabled' : ''  %>>
+            Send
+          </button>
         </form>
+        <% if (!user) { %>
+          <p class="form-error">To send a message, you should login first</p>
+        <% } %>
       </div>
     </div>
   </div>
