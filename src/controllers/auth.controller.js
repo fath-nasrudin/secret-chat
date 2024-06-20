@@ -6,6 +6,8 @@ const {
 const {hashPassword} = require('../utils/hasher/hasher.middleware');
 const User = require('../models/user.model');
 const { passport } = require('../utils/authentication')
+const { checkAuthentication } = require('../utils/authentication/authentication.middleware')
+const config = require('../config');
 
 module.exports.getSignup = (req, res) => {
   res.render('auth/signup_form', {
@@ -58,3 +60,25 @@ module.exports.getLogout = (req, res) => {
       res.redirect('/');
     });  
 }
+
+module.exports.getJoinMember = (req, res) => {
+  res.render('auth/join_member_form', {
+    question: config.memberVerification.question,
+  });
+};
+module.exports.postJoinMember = [
+  checkAuthentication(),
+  async (req, res) => {
+    const { answer } = req.body;
+    if ((answer.toLowerCase() !== config.memberVerification.answer.toLowerCase())) {
+      res.render('auth/join_member_form', {
+        question: config.memberVerification.question,
+        errors: [{msg: 'wrong answer', path: 'answer'}],
+      });
+      return;
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {is_member: true})
+    res.redirect('/');
+  }
+];

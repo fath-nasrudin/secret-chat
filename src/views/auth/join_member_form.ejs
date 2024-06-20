@@ -1,0 +1,24 @@
+<%- include('../shared/layout_top') %>
+    <div class="main-container mt-8" style="display: grid; place-content: center; gap: 16px;">
+      <h1 class="text-center">Join Member</h1>
+      
+      <form class="form width-lg" method="post">
+        <div class="form-group">
+          <p><%= question ? question : 'No Question yet' %></p>
+          <label class="form-label"  for="answer">Answer</label>
+          <input
+            class="form-input"
+            id="answer"
+            type="text"
+            name="answer"
+            value="<%= answer ? answer : '' %>"
+            required
+          >
+          <%- include('../shared/input_error', { path: 'answer'}) %>
+          <%# , errors: errors?errors:null %>
+        </div>
+        
+        <button class="btn btn--primary">Join</button>
+      </form>
+    </div>
+<%- include('../shared/layout_bottom') %>

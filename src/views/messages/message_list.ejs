@@ -7,7 +7,13 @@
           <% messages.forEach(message => { %>
 
             <% const isMyMessage = (user && message.user._id.toString() === user._id.toString()) ? 'message--mine': ''  %>
-            <% const messageSender = (user && message.user._id.toString() === user._id.toString()) ? 'you': message.user.username  %>
+            <% const messageSender = 
+              (user && message.user._id.toString() === user._id.toString()) 
+                ? 'you'
+                : (user && user.is_member) 
+                  ? message.user.username
+                  : 'anonymous'
+            %>
             <div class=" message <%= isMyMessage %>">
               <div class="message__sender">
                 <%= messageSender %>
@@ -45,5 +51,8 @@
         <% } %>
       </div>
     </div>
+    <% if (user && !user.is_member) { %>
+      <p class="form-error">To see the sender, you should be a member. <a class="text-primary-900" href="/auth/join-member">Join Member</a></p>
+    <% } %>
   </div>
 <%- include('../shared/layout_bottom') %>

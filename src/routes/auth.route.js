@@ -12,4 +12,8 @@ router.route('/login')
 router.route('/logout')
   .get(authController.getLogout);
 
+router.route('/join-member')
+  .get(authController.getJoinMember)
+  .post(authController.postJoinMember);
+
 module.exports = router;

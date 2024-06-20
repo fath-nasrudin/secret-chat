@@ -2,8 +2,10 @@
     <a href="/" class="logo  mr-auto">Secret Chat</a>
 
     <% if (user) { %>
+      <% if (!user.is_member) { %>
+        <a href="/auth/join-member"><button class="btn">Join Member</button></a>
+      <% } %>
       <a href="/auth/logout"><button class="btn">Logout</button></a>
-
     <% } else { %>
       <div>
         <a href="/auth/signup"><button class="btn">Sign Up</button></a>

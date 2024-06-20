@@ -7,5 +7,10 @@ module.exports = {
     secret: process.env.SESSION_SECRET_KEY || 'cutiecat',
     resave: false,
     saveUninitialized: true,
+  },
+  memberVerification: {
+    question: process.env.VERIFICATION_QUESTION ||
+      'What is the capital city of Indonesia',
+    answer: process.env.VERIFICATION_ANSWER || 'jakarta',
   }
 }

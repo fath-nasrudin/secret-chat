@@ -5,6 +5,10 @@ router.use((req, res, next) => {
     errors: null,
     user: req.user ? req.user: null,
     userdata: null,
+    
+    // for verification
+    question: null,
+    answer: null,
   }
   next();
 })
